@@ -1,0 +1,6 @@
+.moveable {
+  position: absolute;
+}
+.moveable img {
+  height: 60vh;
+}
