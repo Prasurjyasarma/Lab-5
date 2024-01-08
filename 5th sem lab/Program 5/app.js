@@ -1,14 +1,15 @@
 var d = new Date();
-var weekday = new Array(
+var weekday = [
   "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
-);
-var monthname = new Array(
+  "Saturday",
+];
+
+var monthname = [
   "Jan",
   "Feb",
   "Mar",
@@ -20,10 +21,10 @@ var monthname = new Array(
   "Sep",
   "Oct",
   "Nov",
-  "Dec"
-);
+  "Dec",
+];
 
 document.write(weekday[d.getDay()] + " ");
-document.write(d.getDate() + ". ");
+document.write(d.getDate() + " of ");
 document.write(monthname[d.getMonth()] + " ");
 document.write(d.getFullYear());
