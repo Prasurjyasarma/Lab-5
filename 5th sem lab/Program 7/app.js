@@ -4,6 +4,7 @@ function calc() {
   id = document.form1.userid.value;
   desg = document.form1.designation.value;
   bp = parseInt(document.form1.bp.value);
+
   DA = bp * 0.5;
   HRA = bp * 0.5;
   GP = bp + DA + HRA;
@@ -11,6 +12,7 @@ function calc() {
   Tax = GP * 0.01;
   Deduction = Tax + PF;
   NetPay = GP - Deduction;
+
   document.form1.da.value = DA;
   document.form1.hra.value = HRA;
   document.form1.gp.value = GP;
