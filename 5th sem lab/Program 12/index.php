@@ -1,6 +1,4 @@
 <?php
-
-// Sample user data
 $users = [
     ['name' => 'John', 'age' => 25],
     ['name' => 'Jane', 'age' => 30],
@@ -8,49 +6,22 @@ $users = [
     ['name' => 'Bob', 'age' => 28],
 ];
 
-// Function to search users by name
-function searchByName($users, $query) {
-    $results = [];
-    foreach ($users as $user) {
-        if (strpos(strtolower($user['name']), strtolower($query)) !== false) {
-            $results[] = $user;
-        }
-    }
-    return $results;
+function search($users, $criteria, $value) {
+    return array_filter($users, fn($user) => $user[$criteria] === $value || strpos(strtolower($user[$criteria]), strtolower($value)) !== false);
 }
 
-// Function to search users by age
-function searchByAge($users, $query) {
-    $results = [];
-    foreach ($users as $user) {
-        if ($user['age'] == $query) {
-            $results[] = $user;
-        }
-    }
-    return $results;
-}
-
-// Example usage:
 $searchName = 'Alice';
 $searchAge = 28;
 
 echo "Searching users by name: $searchName<br/>";
-$nameResults = searchByName($users, $searchName);
-printResults($nameResults); 
+$nameResults = search($users, 'name', $searchName);
+printResults($nameResults);
 
 echo "<br/>Searching users by age: $searchAge<br/>";
-$ageResults = searchByAge($users, $searchAge);
+$ageResults = search($users, 'age', $searchAge);
 printResults($ageResults);
 
-// Function to print search results
 function printResults($results) {
-    if (empty($results)) {
-        echo "No results found.<br/>";
-    } else {
-        foreach ($results as $result) {
-            echo "Name: {$result['name']}, Age: {$result['age']}<br/>";
-        }
-    }
+    echo empty($results) ? "No results found.<br/>" : implode("<br/>", array_map(fn($result) => "Name: {$result['name']}, Age: {$result['age']}", $results));
 }
-
 ?>
